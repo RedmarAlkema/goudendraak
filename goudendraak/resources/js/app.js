@@ -16,7 +16,9 @@ import { createApp } from 'vue';
 const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
+import MenuComponent from './components/MenuComponent.vue';
 app.component('example-component', ExampleComponent);
+app.component('menu-component', MenuComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -35,5 +37,6 @@ app.component('example-component', ExampleComponent);
  * an "id" attribute of "app". This element is included with the "auth"
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
+
 
 app.mount('#app');

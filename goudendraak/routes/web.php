@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\KlantController;
 
 Route::get('/', function () {
     return view('index');
@@ -25,3 +26,5 @@ Route::get('/paginas/contact', function () {
 Route::get('/paginas/contact_new', function () {
     return view('paginas.contact_new');
 })->name('contact_new');
+
+Route::get('/bestellen', [KlantController::class, 'index']);
