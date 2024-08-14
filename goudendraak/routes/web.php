@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KlantController;
+use App\Http\Controllers\TableController;
+
 
 Route::get('/', function () {
     return view('index');
@@ -36,3 +38,6 @@ Route::post('/cart/remove', [KlantController::class, 'removeItem'])->name('cart.
 Route::post('/store-table-number', [KlantController::class, 'storeTableNumber'])->name('cart.storeTableNumber');
 Route::post('/checkout', [KlantController::class, 'checkout'])->name('cart.checkout');
 Route::get('/thank-you', [KlantController::class, 'thankYou'])->name('cart.thankyou');
+
+Route::get('/tables', [TableController::class, 'index'])->name('tables.index');
+Route::get('/tables/reserve/{id}', [TableController::class, 'reserve'])->name('tables.reserve');

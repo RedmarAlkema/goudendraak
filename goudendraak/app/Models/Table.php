@@ -12,7 +12,8 @@ class Table extends Model
     protected $fillable = [
         'total',
         'customer_amount',
-        'table_number'
+        'table_number',
+        'occupied',
     ];
 
     public function orders()
