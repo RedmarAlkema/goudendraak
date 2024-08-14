@@ -28,5 +28,9 @@ Route::get('/paginas/contact_new', function () {
 })->name('contact_new');
 
 Route::get('/bestellen', [KlantController::class, 'index'])->name('cart.index');
+Route::get('/cart', [KlantController::class, 'cartIndex'])->name('cart.cart');
 Route::post('/store', [KlantController::class, 'store'])->name('cart.store');
 Route::get('/cart/count', [KlantController::class, 'cartItemCount']);
+Route::post('/cart/update', [KlantController::class, 'updateCart'])->name('cart.update');
+Route::post('/cart/remove', [KlantController::class, 'removeItem'])->name('cart.remove');
+

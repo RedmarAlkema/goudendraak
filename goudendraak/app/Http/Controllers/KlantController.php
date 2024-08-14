@@ -45,4 +45,44 @@ class KlantController extends Controller
 
         return response()->json(['count' => $count]);
     }
+
+    public function cartIndex()
+    {
+        $cart = Session::get('cart', []);   
+        return view('klant-tablet.cart', compact('cart'));
+    }
+
+    public function updateCart(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id' => 'required|integer|exists:menu,id',
+            'quantity' => 'required|integer|min:1|max:8',
+        ]);
+
+        $cart = Session::get('cart', []);
+
+        if (isset($cart[$validatedData['id']])) {
+            $cart[$validatedData['id']]['quantity'] = $validatedData['quantity'];
+            Session::put('cart', $cart);
+        }
+
+        return redirect()->route('cart.cart')->with('success', 'Winkelwagen bijgewerkt!');
+    }
+
+    public function removeItem(Request $request)
+    {
+        $validatedData = $request->validate([
+            'id' => 'required|integer|exists:menu,id',
+        ]);
+
+        $cart = Session::get('cart', []);
+
+        if (isset($cart[$validatedData['id']])) {
+            unset($cart[$validatedData['id']]);
+            Session::put('cart', $cart);
+        }
+
+        return redirect()->route('cart.cart')->with('success', 'Item verwijderd uit winkelwagen!');
+    }
+
 }
