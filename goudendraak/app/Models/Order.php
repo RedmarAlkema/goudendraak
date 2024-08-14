@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Menu;
 
 class Order extends Model
 {
@@ -11,12 +12,18 @@ class Order extends Model
 
     protected $fillable = [
         'table_id',
-        'time',
-        'round',
+        'menu_id',
+        'time',        
     ];
 
     public function table()
     {
         return $this->belongsTo(Table::class);
     }
+
+    public function menu()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id');
+    }
+
 }

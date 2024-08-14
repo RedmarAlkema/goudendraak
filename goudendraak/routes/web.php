@@ -33,4 +33,6 @@ Route::post('/store', [KlantController::class, 'store'])->name('cart.store');
 Route::get('/cart/count', [KlantController::class, 'cartItemCount']);
 Route::post('/cart/update', [KlantController::class, 'updateCart'])->name('cart.update');
 Route::post('/cart/remove', [KlantController::class, 'removeItem'])->name('cart.remove');
-
+Route::post('/store-table-number', [KlantController::class, 'storeTableNumber'])->name('cart.storeTableNumber');
+Route::post('/checkout', [KlantController::class, 'checkout'])->name('cart.checkout');
+Route::get('/thank-you', [KlantController::class, 'thankYou'])->name('cart.thankyou');

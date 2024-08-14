@@ -93,6 +93,7 @@ export default {
         addToCart(menuId) {
             axios.post('/store', { id: menuId })
                 .then(response => {
+                    this.$root.$emit('cart-updated');
                     alert('Item toegevoegd aan de winkelwagen!');
                 })
                 .catch(error => {

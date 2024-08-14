@@ -13,11 +13,15 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            cartItemCount: 0, // Houdt het aantal items in de winkelwagen bij
+            cartItemCount: 0,
         };
     },
     mounted() {
-        this.updateCartCount(); // Update de teller zodra het component is gemonteerd
+        this.updateCartCount();
+        this.$root.$on('cart-updated', this.updateCartCount);
+    },
+    beforeDestroy() {
+        this.$root.$off('cart-updated', this.updateCartCount);
     },
     methods: {
         updateCartCount() {
@@ -35,6 +39,7 @@ export default {
     },
 };
 </script>
+
 
 <style scoped>
 .cart-icon-container {
