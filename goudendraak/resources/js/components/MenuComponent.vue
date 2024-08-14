@@ -21,6 +21,9 @@
                 <p>{{ menu.soortgerecht }}</p>
                 <p>€{{ menu.price.toFixed(2) }}</p>
                 <p>{{ menu.beschrijving }}</p>
+                <form @submit.prevent="addToCart(menu.id)">
+                    <button type="submit">Voeg toe aan winkelwagen</button>
+                </form>
             </div>
         </div>
         <div class="pagination">
@@ -37,6 +40,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
     props: ['menus'],
     data() {
@@ -81,9 +86,21 @@ export default {
             return Math.ceil(filtered.length / this.itemsPerPage);
         }
     },
-    methods: {
+   methods: {
         goToPage(page) {
             this.currentPage = page;
+        },
+        addToCart(menuId) {
+            axios.post('/store', { id: menuId })
+                .then(response => {
+                    alert('Item toegevoegd aan de winkelwagen!');
+                })
+                .catch(error => {
+                    console.error('Status:', error.response.status);
+                    console.error('Data:', error.response.data);
+                    console.error('Er is een fout opgetreden bij het toevoegen aan de winkelwagen:', error);
+                    alert('Kon het item niet toevoegen aan de winkelwagen.');
+                });
         }
     }
 };

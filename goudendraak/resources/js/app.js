@@ -17,8 +17,11 @@ const app = createApp({});
 
 import ExampleComponent from './components/ExampleComponent.vue';
 import MenuComponent from './components/MenuComponent.vue';
+import ShoppingCartComponent from './components/ShoppingCartComponent.vue';
+
 app.component('example-component', ExampleComponent);
 app.component('menu-component', MenuComponent);
+app.component('shopping-cart-component', ShoppingCartComponent);
 
 /**
  * The following block of code may be used to automatically register your
