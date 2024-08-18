@@ -117,7 +117,7 @@
                     </div>
                 </div>
             @endforeach
-
+                        
             @if(!Session::has('checkout_end_time') || now()->greaterThan(Session::get('checkout_end_time')))
             <div class="checkout">
                 <form action="{{ route('cart.checkout') }}" method="POST">
