@@ -118,9 +118,7 @@ class KlantController extends Controller
             return redirect()->back()->with('error', 'Geen tafel gevonden.');
         }
 
-        $table = Table::where('table_number', $tableInSession->table_number)
-                    ->where('id', $tableInSession->id)
-                    ->first();
+        $table = Table::where('table_number', $tableInSession->table_number)->first();
 
         if (!$table) {
             return redirect()->back()->with('error', 'Geen tafel gevonden.');
@@ -133,10 +131,9 @@ class KlantController extends Controller
                 for ($i = 0; $i < $item['quantity']; $i++) {
                     Order::create([
                         'table_id' => $table->id,
-                        'menu_id' => $menuId,
-                        'time' => now(),
-                        'round' => $table->round,
                         'reservation_id' => $table->reservation_id,
+                        'menu_id' => $menuId,
+                        'time' => now(),                        
                     ]);
                 }
             }

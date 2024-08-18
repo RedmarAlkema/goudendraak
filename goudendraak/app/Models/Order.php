@@ -14,6 +14,7 @@ class Order extends Model
         'table_id',
         'menu_id',
         'time',        
+        'reservation_id',
     ];
 
     public function table()

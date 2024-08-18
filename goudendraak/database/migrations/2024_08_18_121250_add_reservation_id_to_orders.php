@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
           
-            $table->unsignedBigInteger('reservation_id')->nullable();
-            $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('set null');
+            $table->unsignedBigInteger('reservation_id');
+            $table->foreign('reservation_id')->references('id')->on('reservations');
         });
     }
 
