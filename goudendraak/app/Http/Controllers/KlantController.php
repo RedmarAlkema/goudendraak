@@ -118,9 +118,7 @@ class KlantController extends Controller
             return redirect()->back()->with('error', 'Geen tafel gevonden.');
         }
 
-        $table = Table::where('table_number', $tableInSession->table_number)
-                    ->where('id', $tableInSession->id)
-                    ->first();
+        $table = Table::where('table_number', $tableInSession->table_number)->first();
 
         if (!$table) {
             return redirect()->back()->with('error', 'Geen tafel gevonden.');
@@ -133,20 +131,22 @@ class KlantController extends Controller
                 for ($i = 0; $i < $item['quantity']; $i++) {
                     Order::create([
                         'table_id' => $table->id,
+                        'reservation_id' => $table->reservation_id,
                         'menu_id' => $menuId,
-                        'time' => now(),
-                        'round' => $table->round,
+                        'time' => now(),                        
                     ]);
                 }
             }
 
             $table->round += 1;
-            $currRound = $table->round;
+            $currRound = $table->round;          
+            
             $total = \DB::table('orders')
-                ->join('menu', 'orders.menu_id', '=', 'menu.id')
+                ->join('menu', 'orders.menu_id', '=', 'menu.id')                
                 ->where('orders.table_id', $table->id)
+                ->where('orders.reservation_id', $table->reservation_id)
                 ->sum('menu.price');
-
+            
             $table->total = $total;
             $table->save();
 
@@ -161,13 +161,14 @@ class KlantController extends Controller
 
         $endTime = now()->addMinutes(10);
         Session::put('checkout_end_time', $endTime);
-        
+
         if ($table->round > 5) {
             return redirect()->route('cart.thankyou');
         }
         dump($table->round > 5);
         return redirect()->route('cart.index')->with('success', 'Bestelling succesvol afgerond!');
     }
+
 
 
     public function thankYou()
