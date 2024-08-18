@@ -41,3 +41,5 @@ Route::get('/thank-you', [KlantController::class, 'thankYou'])->name('cart.thank
 
 Route::get('/tables', [TableController::class, 'index'])->name('tables.index');
 Route::get('/tables/reserve/{id}', [TableController::class, 'reserve'])->name('tables.reserve');
+Route::post('/tables/reserve/{id}', [TableController::class, 'storeReservation'])->name('tables.reserve.store');
+Route::post('/tables/finalize/{id}', [TableController::class, 'finalizePayment'])->name('tables.finalize');

@@ -136,17 +136,20 @@ class KlantController extends Controller
                         'menu_id' => $menuId,
                         'time' => now(),
                         'round' => $table->round,
+                        'reservation_id' => $table->reservation_id,
                     ]);
                 }
             }
 
             $table->round += 1;
-            $currRound = $table->round;
+            $currRound = $table->round;          
+            
             $total = \DB::table('orders')
-                ->join('menu', 'orders.menu_id', '=', 'menu.id')
+                ->join('menu', 'orders.menu_id', '=', 'menu.id')                
                 ->where('orders.table_id', $table->id)
+                ->where('orders.reservation_id', $table->reservation_id)
                 ->sum('menu.price');
-
+            
             $table->total = $total;
             $table->save();
 
@@ -161,13 +164,14 @@ class KlantController extends Controller
 
         $endTime = now()->addMinutes(10);
         Session::put('checkout_end_time', $endTime);
-        
+
         if ($table->round > 5) {
             return redirect()->route('cart.thankyou');
         }
         dump($table->round > 5);
         return redirect()->route('cart.index')->with('success', 'Bestelling succesvol afgerond!');
     }
+
 
 
     public function thankYou()

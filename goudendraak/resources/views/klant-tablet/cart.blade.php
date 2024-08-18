@@ -70,14 +70,14 @@
 
             if (--timer < 0) {
                 clearInterval(interval);
-                location.reload(); // Refresh de pagina als de tijd om is
+                location.reload();
             }
         }, 1000);
     }
 
     window.onload = function () {
-        const endTime = new Date("{{ Session::get('checkout_end_time')->toIso8601String() }}").getTime();
         const now = new Date().getTime();
+        const endTime = new Date(now.getTime() + 10 * 60 * 1000);
         const remainingTime = (endTime - now) / 1000;
 
         if (remainingTime > 0) {
@@ -117,7 +117,7 @@
                     </div>
                 </div>
             @endforeach
-
+                        
             @if(!Session::has('checkout_end_time') || now()->greaterThan(Session::get('checkout_end_time')))
             <div class="checkout">
                 <form action="{{ route('cart.checkout') }}" method="POST">
