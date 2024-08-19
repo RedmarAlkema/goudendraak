@@ -30,16 +30,34 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'menunummer' => 'required|integer',
-            'naam' => 'required',
+            'menunummer' => [
+                'required',
+                'integer',
+                function ($attribute, $value, $fail) use ($request) {
+                    if (Menu::where('menunummer', $value)
+                            ->where('menu_toevoeging', $request->menu_toevoeging)
+                            ->exists()) {
+                        $fail('Het menunummer en menu toevoeging moeten uniek zijn.');
+                    }
+                },
+            ],
+            'menu_toevoeging' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+            'naam' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'soortgerecht' => 'required',
+            'soortgerecht' => 'required|string|max:255',
+            'beschrijving' => 'nullable|string',
         ]);
-
+    
         Menu::create($request->all());
-
-        return redirect()->route('admin.menu')->with('success', 'Gerecht toegevoegd');
+    
+        return redirect()->route('admin.menu')->with('success', 'Gerecht succesvol toegevoegd.');
     }
+    
+
 
     public function edit($id)
     {
