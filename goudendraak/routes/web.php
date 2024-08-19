@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KlantController;
 use App\Http\Controllers\TableController;
+use App\Http\Controllers\MenuController;
 
 
 Route::get('/', function () {
@@ -43,3 +44,11 @@ Route::get('/tables', [TableController::class, 'index'])->name('tables.index');
 Route::get('/tables/reserve/{id}', [TableController::class, 'reserve'])->name('tables.reserve');
 Route::post('/tables/reserve/{id}', [TableController::class, 'storeReservation'])->name('tables.reserve.store');
 Route::post('/tables/finalize/{id}', [TableController::class, 'finalizePayment'])->name('tables.finalize');
+
+Route::get('/admin/menu', [MenuController::class, 'index'])->name('admin.menu');
+Route::get('/admin/menu/create', [MenuController::class, 'create'])->name('admin.menu.create');
+Route::post('/admin/menu', [MenuController::class, 'store'])->name('admin.menu.store');
+Route::get('/admin/menu/{id}/edit', [MenuController::class, 'edit'])->name('admin.menu.edit');
+Route::put('/admin/menu/{id}', [MenuController::class, 'update'])->name('admin.menu.update');
+Route::delete('/admin/menu/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy');
+
