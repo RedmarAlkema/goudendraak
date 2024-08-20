@@ -76,14 +76,18 @@
     }
 
     window.onload = function () {
-        const endTime = new Date("{{ Session::get('checkout_end_time')->toIso8601String() }}").getTime();
-        const now = new Date().getTime();
-        const remainingTime = (endTime - now) / 1000;
+        @if(Session::has('checkout_end_time') && Session::get('checkout_end_time') !== null)
+            const endTime = new Date("{{ Session::get('checkout_end_time')->toIso8601String() }}").getTime();
+            const now = new Date().getTime();
+            const remainingTime = (endTime - now) / 1000;
 
-        if (remainingTime > 0) {
-            const display = document.querySelector('#time');
-            startTimer(remainingTime, display);
-        }
+            if (remainingTime > 0) {
+                const display = document.querySelector('#time');
+                startTimer(remainingTime, display);
+            }
+        @else
+            console.error("checkout_end_time is not set in the session.");
+        @endif
     };
 </script>
 </head>
