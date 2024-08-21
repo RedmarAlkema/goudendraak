@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Table;
 use App\Models\Order;
 use App\Models\Visitor;
+use App\Models\Sales;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 class TableController extends Controller

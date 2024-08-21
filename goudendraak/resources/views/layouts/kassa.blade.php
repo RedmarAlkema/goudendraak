@@ -19,7 +19,7 @@
                         <a class="nav-link active" aria-current="page" href="{{ route('kassa.index') }}">Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">XXXXX</a>
+                        <a class="nav-link" href="{{ route('kassa.orders') }}">orders</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">xxxx</a>

@@ -62,4 +62,6 @@ Route::get('/sales/index/',[ExcelController::class, 'index'])->name('admin.sales
 Route::get('/sales/today/',[ExcelController::class, 'today'])->name('admin.sales.today');
 
 Route::get('/kassa',[KassaController::class, 'index'])->name('kassa.index');
-Route::get('/cashier/menu', [KassaController::class, 'searchMenu'])->name('cashier.menu');
+Route::get('/kassa/orders', [KassaController::class, 'orders'])->name('kassa.orders');
+Route::post('/kassa/orders/{id}/comment', [KassaController::class, 'addComment'])->name('kassa.orders.comment');
+
