@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Table;
+use App\Models\Order;
 use App\Models\Visitor;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Log;
@@ -27,7 +28,6 @@ class TableController extends Controller
     {
         $table = Table::findOrFail($id);
 
-        // Create a new reservation
         $reservation = new Reservation([
             'table_id' => $table->id,
         ]); 
@@ -69,7 +69,19 @@ class TableController extends Controller
         $table->total = 0.00;
         $table->save();
 
+        $orders = Order::where('reservation_id', $table->reservation_id)
+        ->select('menu_id', DB::raw('count(*) as amount'))
+        ->groupBy('menu_id')
+        ->get();
+
+        foreach($orders as $order) {
+            Sales::create([
+                'itemId' => $order->menu_id,
+                'amount' => $order->amount,  
+                'saleDate' => now(),  
+            ]);
+        }
+
         return redirect()->route('tables.index');
     }
-
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KlantController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\MenuController;
-
+use App\Http\Controllers\ExcelController;
 
 Route::get('/', function () {
     return view('index');
@@ -52,3 +52,6 @@ Route::get('/admin/menu/{id}/edit', [MenuController::class, 'edit'])->name('admi
 Route::put('/admin/menu/{id}', [MenuController::class, 'update'])->name('admin.menu.update');
 Route::delete('/admin/menu/{id}', [MenuController::class, 'destroy'])->name('admin.menu.destroy');
 
+Route::get('/sales/export/',[ExcelController::class, 'export'])->name('admin.export');
+Route::get('/sales/index/',[ExcelController::class, 'index'])->name('admin.sales');
+Route::get('/sales/today/',[ExcelController::class, 'today'])->name('admin.sales.today');

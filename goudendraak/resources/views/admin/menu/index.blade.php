@@ -1,3 +1,7 @@
+@extends('layouts.admin')
+
+@section('content')
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +12,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
         }
 
         h1 {
@@ -78,7 +81,7 @@
 
         th, td {
             text-align: left;
-            padding: 12px;
+            padding: 7px;
             border-bottom: 1px solid #ddd;
         }
 
@@ -191,3 +194,4 @@
 <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
+@endsection
