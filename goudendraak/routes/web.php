@@ -6,6 +6,7 @@ use App\Http\Controllers\TableController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\KassaController;
 
 Route::get('/', function () {
     return view('index');
@@ -58,12 +59,9 @@ Route::delete('/admin/menu/{id}', [MenuController::class, 'destroy'])->name('adm
 
 Route::get('/sales/export/',[ExcelController::class, 'export'])->name('admin.export');
 Route::get('/sales/index/',[ExcelController::class, 'index'])->name('admin.sales');
-<<<<<<< Updated upstream
-Route::get('/sales/today/',[ExcelController::class, 'today'])->name('admin.sales.today');
-=======
 Route::get('/sales/today/',[ExcelController::class, 'today'])->name('admin.sales.today');
 
 Route::get('/kassa',[KassaController::class, 'index'])->name('kassa.index');
 Route::get('/kassa/orders', [KassaController::class, 'orders'])->name('kassa.orders');
 Route::post('/kassa/orders/{id}/comment', [KassaController::class, 'addComment'])->name('kassa.orders.comment');
->>>>>>> Stashed changes
+
