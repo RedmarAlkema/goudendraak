@@ -165,7 +165,6 @@ class KlantController extends Controller
         if ($table->round > 5) {
             return redirect()->route('cart.thankyou');
         }
-        dump($table->round > 5);
         return redirect()->route('cart.index')->with('success', 'Bestelling succesvol afgerond!');
     }
 
@@ -180,6 +179,8 @@ class KlantController extends Controller
         }
 
         $total = $table->total;
+
+        Session::forget(['cart', 'round','table']);;
 
         return view('klant-tablet.bye', compact('total'));
     }

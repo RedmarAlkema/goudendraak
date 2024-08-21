@@ -16,6 +16,48 @@
 
         a {text-decoration: none; color: yellow;}
     </style>
+    <style>
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination a {
+            color: yellow;
+            text-decoration: none;
+            padding: 8px 12px;
+            border: 2px solid yellow;
+            border-radius: 4px;
+            background-color: red;
+            font-family: 'chinese_takeawayregular';
+            font-size: 16px;
+        }
+
+        .pagination a:hover {
+            background-color: yellow;
+            color: red;
+        }
+
+        .pagination .active a {
+            background-color: yellow;
+            color: red;
+            border-color: yellow;
+        }
+
+        .pagination .disabled a {
+            color: #ccc;
+            pointer-events: none;
+            border-color: #ddd;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -111,6 +153,11 @@
                                         <td valign="middle">
                                             <a href="{{ route('contact') }}" style="color:white">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            </a>
+                                        </td>
+                                        <td valign="middle">
+                                            <a href="{{ route('paginas.menu') }}" style="color:white">
+                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Menu&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                         </td>
                                     </tr>
