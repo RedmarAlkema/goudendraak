@@ -161,7 +161,6 @@
         </tbody>
     </table>
 
-    <!-- Pagination links -->
     <ul class="pagination">
         {{ $sales->links('pagination::bootstrap-4') }}
     </ul>
