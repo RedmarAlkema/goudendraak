@@ -5,6 +5,7 @@ use App\Http\Controllers\KlantController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\WebsiteController;
 
 Route::get('/', function () {
     return view('index');
@@ -29,6 +30,9 @@ Route::get('/paginas/contact', function () {
 Route::get('/paginas/contact_new', function () {
     return view('paginas.contact_new');
 })->name('contact_new');
+
+Route::get('/menu', [WebsiteController::class, 'menu'])->name('paginas.menu');
+Route::post('/menu/like/{id}', [WebsiteController::class, 'toggleLike'])->name('menu.like');
 
 Route::get('/bestellen', [KlantController::class, 'index'])->name('cart.index');
 Route::get('/cart', [KlantController::class, 'cartIndex'])->name('cart.cart');
