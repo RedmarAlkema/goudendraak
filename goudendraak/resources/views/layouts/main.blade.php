@@ -265,9 +265,10 @@
                         <td colspan="3" height="50px">    
                         </td>
                     </tr>                   
-                    
+                    <div class="content">
+                        @yield('content')
+                    </div>
                 </table>
-                {{ $slot }}
                 <br>
                 <div text-align="center"><a href="{{ route('contact_new') }}">@lang('public.naar contact')</a></div>
             </td>
