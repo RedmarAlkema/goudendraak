@@ -9,11 +9,19 @@
 <body>
     <div class="container my-5">
         <h1 class="text-center mb-4">Tafel Overzicht</h1>
-        <div class="list-group">
+        
+        <div class="mb-4">
+            <form action="{{ route('tables.index') }}" method="GET" class="d-flex">
+                <input type="text" name="search" id="searchInput" class="form-control me-2" placeholder="Zoek op tafelnummer..." value="{{ request()->input('search') }}">
+                <button type="submit" class="btn btn-primary">Zoeken</button>
+            </form>
+        </div>
+        
+        <div class="list-group" id="tableList">
             @foreach($tables as $table)
-                <div class="list-group-item d-flex justify-content-between align-items-center @if($table->occupied) list-group-item-danger @else list-group-item-success @endif">
+                <div class="list-group-item d-flex justify-content-between align-items-center table-item @if($table->occupied) list-group-item-danger @else list-group-item-success @endif">
                     <div>
-                        <h5>Tafelnummer: {{ $table->table_number }}</h5>
+                        <h5 class="table-number">Tafelnummer: {{ $table->table_number }}</h5>
                         <p>Plekken: {{$table->space }}</p>
                     </div>
                     <div class="text-end">

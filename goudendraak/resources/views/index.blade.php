@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('content')
-    <tr style="padding-top:50px">
-        <td width="50px">    
+    <tr class="tr5">
+        <td class="td15">    
         </td>
-        <td align="center" style='font-size:5;border:1px solid black;background:floralwhite'> <br>
+        <td class="td16"> <br>
             <h3>@lang('public.Intro')<br>
             @lang('public.Intro2')</h3>
             <br>
@@ -11,19 +11,19 @@
             <h1>@lang('public.Chinese Rijsttafel (2 personen)')</h1>
             <h3>
                 @lang('public.Keuze uit drie van de onderstaande gerechten:')<br><br>
-                <table width="60%">
+                <table class="table4">
                     <tr>
-                        <td width="40%" style="text-align:right">
+                        <td class="tr7">
                             @lang('public.Koe Loe Yuk')
                         </td>
-                        <td width="20%">
+                        <td class="td19">
                         </td>
-                        <td width="40%">
+                        <td class="td20">
                             @lang('public.Foe Yong Hai')
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align:right">
+                        <td class="td21">
                             @lang('public.Tjap Tjoy')
                         </td>
                         <td>
@@ -33,7 +33,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td style="text-align:right">
+                        <td class="td21">
                             @lang('public.Babi Pangang')
                         </td>
                         <td>
@@ -48,7 +48,7 @@
             </h3>
             <h1>@lang('public.Prijs'): €21,00</h1>
         </td>
-        <td width="50px">    
+        <td class="td15">    
         </td>
     </tr>
 @endsection

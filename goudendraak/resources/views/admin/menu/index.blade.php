@@ -27,10 +27,10 @@
             <tr>
                 <td>{{ $menu->menunummer }} {{ $menu->menu_toevoeging }}</td>
                 <td>{{ $menu->naam }}</td>
-                <td>€ {{ number_format($menu->price, 2, ',', '.') }}</td>
+                <td>€{{ number_format($menu->price, 2, ',', '.') }}</td>
                 <td>{{ $menu->soortgerecht }}</td>
                 <td>
-                    <a href="{{ route('admin.menu.edit', $menu->id) }}" class="btn btn-warning">@lang('Bewerken')</a>
+                    <a href="{{ route('admin.menu.edit', $menu->id) }}" class="btn btn-primary">@lang('Bewerken')</a>
                     <form action="{{ route('admin.menu.destroy', $menu->id) }}" method="POST" class="d-inline">
                         @csrf
                         @method('DELETE')
