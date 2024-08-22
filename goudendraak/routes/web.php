@@ -7,6 +7,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\WebsiteController;
 use App\Http\Controllers\KassaController;
+use App\Http\Controllers\LocalizeController;
 
 Route::get('/', function () {
     return view('index');
@@ -65,3 +66,4 @@ Route::get('/kassa',[KassaController::class, 'index'])->name('kassa.index');
 Route::get('/kassa/orders', [KassaController::class, 'orders'])->name('kassa.orders');
 Route::post('/kassa/orders/{id}/comment', [KassaController::class, 'addComment'])->name('kassa.orders.comment');
 
+Route::get('/locale{lange}', [LocalizeController::class, 'setLang'])->name('localize');

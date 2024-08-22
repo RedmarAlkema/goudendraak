@@ -1,12 +1,13 @@
-<x-app-layout>
+@extends('layouts.main')
+@section('content')
 	<tr style="padding-top:50px">
 		<td width="50px">	
 		</td>
 		<td align="center" style='font-size:5;border:1px solid black;background:floralwhite'> <br>
-			<h3>De Gouden Draak is eenvoudig te vinden, vlak bij het centrum, 5 minuten lopen achter het centraal station.
+			<h3>@lang('public.locatie1')
 			<br>
 			<br>
-				Onderwijsboulevard 215, kamer OG112<br> 5223 DE 's-Hertogenbosch	
+				@lang('public.locatie2')<br> @lang('public.locatie3')	
 			</h3>
 		</td>
 		<td width="50px">	
@@ -21,4 +22,5 @@
 		<td width="50px">	
 		</td>
 	</tr>
-</x-app-layout>
+@endsection
+
