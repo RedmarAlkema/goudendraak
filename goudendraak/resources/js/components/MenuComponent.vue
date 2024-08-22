@@ -95,7 +95,7 @@ export default {
         },
         addToCart(menuId) {
             axios.post('/store', { id: menuId })
-                .then(response => {
+                .then(() => {
                     this.$root.$emit('cart-updated');
                     location.reload();
                 })
