@@ -1,43 +1,54 @@
 <x-app-layout>
-    <div style="padding: 20px;">
-        <h1 style="color: yellow;">Menu</h1>       
-
-        <form method="GET" action="{{ route('paginas.menu') }}" style="margin-bottom: 20px;">
-            <input type="text" name="search" placeholder="Search..." value="{{ request('search') }}" style="margin-right: 10px;">
-            <select name="filter" onchange="this.form.submit()">
-                <option value="">Filter</option>
-                <option value="liked" {{ request('filter') == 'liked' ? 'selected' : '' }}>Liked Items</option>
-                <option value="not_liked" {{ request('filter') == 'not_liked' ? 'selected' : '' }}>Not Liked Items</option>
+    <div style="padding: 20px;">        
+        <form method="GET" action="{{ route('paginas.menu') }}" style="margin-bottom: 40px; display: flex; align-items: center; justify-content: center;">
+            <input type="text" name="search" placeholder="@lang('public.Zoeken')..." value="{{ request('search') }}" style="margin-right: 10px; padding: 5px 10px; border: 2px solid yellow; border-radius: 5px; background-color: white; color: yellow;">
+            
+            <select name="filter" onchange="this.form.submit()" style="margin-right: 10px; padding: 5px 10px; border: 2px solid yellow; border-radius: 5px; background-color: red; color: yellow;">
+                <option value="">@lang('public.Filter')</option>
+                <option value="liked" {{ request('filter') == 'liked' ? 'selected' : '' }}>@lang('public.Gelikte Items')</option>
+                <option value="not_liked" {{ request('filter') == 'not_liked' ? 'selected' : '' }}>@lang('public.Niet gelikte Items')</option>
             </select>
-            <select name="sort" onchange="this.form.submit()">
-                <option value="">Sort By</option>
-                <option value="alphabetical" {{ request('sort') == 'alphabetical' ? 'selected' : '' }}>Alphabetical</option>
-                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Price Ascending</option>
-                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Price Descending</option>
-                <option value="liked" {{ request('sort') == 'liked' ? 'selected' : '' }}>Liked</option>
+            
+            <select name="sort" onchange="this.form.submit()" style="margin-right: 10px; padding: 5px 10px; border: 2px solid yellow; border-radius: 5px; background-color: red; color: yellow;">
+                <option value="">@lang('public.Sorteren')</option>
+                <option value="alphabetical" {{ request('sort') == 'alphabetical' ? 'selected' : '' }}>@lang('public.Alfabetisch')</option>
+                <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>@lang('public.Prijs oplopend')</option>
+                <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>@lang('public.Prijs Aflopend')</option>
+                <option value="liked" {{ request('sort') == 'liked' ? 'selected' : '' }}>@lang('public.Favorieten')</option>
             </select>
-            <button type="submit">Apply</button>
+            
+            <button type="submit" style="padding: 5px 15px; border: 2px solid yellow; border-radius: 5px; background-color: red; color: yellow;">@lang('public.Zoek')</button>
         </form>
 
-        <table style="width: 100%; color: white;">
+
+
+        <table style="width: 95%; color: white;">
             <thead>
                 <tr>
-                    <th>Menu Number</th>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th>Menu Nummer</th>
+                    <th>Naam</th>
+                    <th>Prijs</th>
                     <th>Type</th>
-                    <th>Description</th>
-                    <th>Like</th>
+                    <th>Omschrijving</th>
+                    <th>Favoriet</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($menu as $item)
                     <tr>
-                        <td>{{ $item->menunummer }}</td>
-                        <td>{{ $item->naam }}</td>
-                        <td>{{ $item->price }}</td>
-                        <td>{{ $item->soortgerecht }}</td>
-                        <td>{{ $item->beschrijving }}</td>
+                        @if(!empty($item->menunummer))
+                            <td>{{ $item->menunummer }}</td>
+                        @else
+                            <td>x</td>
+                        @endif
+                            <td>@lang('public.' . $item->naam)</td>
+                            <td>{{ $item->price }}</td>
+                            <td>@lang('public.' . $item->soortgerecht)</td>
+                        @if( !empty($item->beschrijving) )
+                            <td>@lang('public.' . $item->beschrijving)</td>
+                        @else 
+                            <td>@lang('public.beschrijving1')</td>
+                        @endif
                         <td>
                             <form method="POST" action="{{ route('menu.like', $item->id) }}">
                                 @csrf
