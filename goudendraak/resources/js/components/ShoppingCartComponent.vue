@@ -13,15 +13,11 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            cartItemCount: 0,
+            cartItemCount: 0
         };
     },
     mounted() {
         this.updateCartCount();
-        this.$root.$on('cart-updated', this.updateCartCount);
-    },
-    beforeDestroy() {
-        this.$root.$off('cart-updated', this.updateCartCount);
     },
     methods: {
         updateCartCount() {
@@ -30,44 +26,12 @@ export default {
                     this.cartItemCount = response.data.count;
                 })
                 .catch(error => {
-                    console.error('Er is een fout opgetreden bij het ophalen van de winkelwagenteller:', error);
+                    console.error('Error fetching cart count:', error);
                 });
         },
         goToCartPage() {
             window.location.href = '/cart';
         }
-    },
+    }
 };
 </script>
-
-
-<style scoped>
-.cart-icon-container {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer; /* Zorgt ervoor dat het icoon klikbaar is */
-}
-
-.size-6 {
-    width: 24px;
-    height: 24px;
-    color: #000;
-}
-
-.cart-count {
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-    margin-left: -10px;
-    margin-top: -10px;
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-</style>

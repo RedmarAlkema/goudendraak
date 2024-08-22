@@ -14,11 +14,20 @@ use Illuminate\Support\Facades\DB;
 
 class TableController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tables = Table::orderBy('occupied', 'asc')->get();
+        $query = Table::orderBy('occupied', 'asc');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('table_number', 'like', '%' . $search . '%');
+        }
+
+        $tables = $query->get();
+
         return view('ober.index', compact('tables'));
     }
+
 
     public function reserve($id)
     {

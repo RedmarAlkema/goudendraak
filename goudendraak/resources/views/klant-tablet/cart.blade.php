@@ -24,7 +24,7 @@
                         <form action="{{ route('cart.update') }}" method="POST" class="d-flex align-items-center me-3">
                             @csrf
                             <input type="hidden" name="id" value="{{ $itemId }}">
-                            <input type="number" name="quantity" value="{{ $item['quantity'] }}" class="form-control text-center me-2" style="width: 60px;" min="1" max="8">
+                            <input type="number" name="quantity" value="{{ $item['quantity'] }}" class="form-control text-center me-2 w-25" min="1" max="8">
                             <button type="submit" class="btn btn-outline-primary">Bijwerken</button>
                         </form>
                         <form action="{{ route('cart.remove') }}" method="POST">
@@ -69,7 +69,7 @@
 
                 if (--timer < 0) {
                     clearInterval(interval);
-                    location.reload(); // Refresh de pagina als de tijd om is
+                    location.reload();
                 }
             }, 1000);
         }

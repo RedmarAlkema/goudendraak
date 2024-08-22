@@ -1,0 +1,365 @@
+body {
+    background-color: darkred;
+    margin: 15px 50px;
+}
+td {
+    padding: 0;
+}
+@font-face {
+    font-family: 'chinese_takeawayregular';
+    src: url('../fonts/chinesetakeaway-webfont.woff2') format('woff2'),
+         url('../fonts/chinesetakeaway-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: yellow;            
+}
+.lang {
+    text-decoration: none;
+    color: yellow;
+    font-size: 14px;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.pagination li {
+    margin: 0 5px;
+}
+.pagination a {
+    color: yellow;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 2px solid yellow;
+    border-radius: 4px;
+    background-color: red;
+    font-family: 'chinese_takeawayregular';
+    font-size: 16px;
+}
+.pagination a:hover {
+    background-color: yellow;
+    color: red;
+}
+.pagination .active a {
+    background-color: yellow;
+    color: red;
+    border-color: yellow;
+}
+.pagination .disabled a {
+    color: #ccc;
+    pointer-events: none;
+    border-color: #ddd;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: red;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 5px;
+}
+.dropdown-content a {
+    color: yellow;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    font-family: 'chinese_takeawayregular';
+}
+.dropdown-content a:hover {
+    background-color: yellow;
+    color: red;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: yellow;
+    color: red;
+}
+.dropbtn {
+    background-color: red;
+    color: yellow;
+    padding: 10px;
+    font-size: 16px;
+    font-family: 'chinese_takeawayregular';
+    border: 2px solid yellow;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.tr1{
+    height: 50px;
+    background-color: red;
+}
+
+.td1{
+    text-align: center;
+    width: 30%;
+    color: yellow;
+    font-size: 30px;
+}
+
+#main_table{
+    padding: 5px;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.img1{
+    vertical-align: middle;
+    height: 50px;
+}
+
+.spanText{
+    font-family: 'chinese_takeawayregular';
+}
+
+.movingText{
+    color: yellow;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.tr2{
+    height: 7px;
+    background-color: red;
+}
+
+.tr3{
+    height: 25px;
+    background-color: red;
+}
+
+.small_td{
+    width: 7px;
+}
+
+.td2{
+    width: 25px;
+    border-left: 4px solid yellow;
+    border-top: 4px solid yellow;
+}
+
+.td3{
+    width: 25px;
+    border-right: 4px solid yellow;
+    border-top: 4px solid yellow;
+}
+
+.td4{
+    width: 25px;
+    border-right: 4px solid yellow;
+    border-bottom: 4px solid yellow;
+}
+
+.td5{
+    border-top: 4px solid yellow;
+    border-bottom: 4px solid yellow;
+}
+
+.td6{
+    width: 25px;
+    border-left: 4px solid yellow;
+    border-bottom: 4px solid yellow;
+}
+
+.td7{
+    width: 25px;
+    border: 4px solid yellow;
+}
+
+.td8{
+    width: 25px;
+    border-bottom: 4px solid yellow;
+}
+
+.small_td2{
+    width: 25px;
+}
+
+.td9{
+    width: 25px;
+    border-right: 4px solid yellow;
+    border-left: 4px solid yellow;
+}
+
+.td10{
+    text-align: center;
+}
+
+.table1{
+    width: 100%;
+}
+
+.img2{
+    float: left;
+    height: 200px;
+}
+
+.img3{
+    float: right;
+    height: 200px;
+}
+
+.span1{
+    font-size: 40px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.span2{
+    font-size: 50px;
+    font-weight: bold;
+    color: yellow;
+}
+
+.table2{
+    /* de border was in inline niet goed aangegeven en niet geactiveert, 
+    hier is dit wel goed gedaan maar het ziet er dus anders uit als in het origineel */
+    margin: auto;
+    font-size: 20px;
+    color: white;
+    border: 1px solid white;
+}
+
+.tr4{
+    vertical-align: middle;
+}
+
+.white{
+    color: white;
+}
+
+.tr5{
+    padding-top: 50px;
+}
+
+.td11{
+    height: 50px;
+}
+
+.centerText{
+    text-align: center;
+}
+
+.td12{
+    width: 25px;
+    border-top: 4px solid yellow;
+}
+
+.td13{
+    width: 25px;
+    border-right: 4px solid yellow;
+}
+
+.td14{
+    width: 25px;
+    border-left: 4px solid yellow;
+}
+
+.tr6{
+    background-image: url('../pictures/menu_bg_gradient.png');
+}
+
+.td15 {
+    width: 50px;
+}
+
+.td16 {
+    text-align: center;    
+    border: 1px solid black;
+    background-color: floralwhite;
+}
+
+.menu1{
+    padding: 20px;
+}
+
+.form1{
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input1{
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    background-color: white;
+    color: yellow
+}
+
+.select1{
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    background-color: red;
+    color: yellow;
+}
+
+.button1{
+    padding: 5px 15px;
+    border: 2px solid yellow;
+    border-radius: 5px;
+    background-color: red;
+    color: yellow;
+
+}
+
+.table3{
+    width: 95%;
+    color: white;
+}
+
+.button2{
+    background: none;
+    border: none;
+}
+
+.td17{
+    border: 1px solid black;
+    background: floralwhite;
+}
+
+.table4{
+    width: 60%;
+    margin-left: 15%;
+    text-align: right;
+}
+
+.td18{    
+    border: 1px solid black;
+    background-color: floralwhite;
+}
+
+.tr7{
+    width: 40%;
+    text-align: right;
+}
+
+.td19{
+    width: 20%;
+}
+
+.td20{
+    width: 40%;
+}
+
+.td21{
+    text-align: right;
+}
