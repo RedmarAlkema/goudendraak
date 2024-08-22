@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Table;
 use App\Models\Order;
 use App\Models\Visitor;
-use App\Models\Sales;
+use App\Models\Sale;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
@@ -77,7 +77,7 @@ class TableController extends Controller
         ->get();
 
         foreach($orders as $order) {
-            Sales::create([
+            Sale::create([
                 'itemId' => $order->menu_id,
                 'amount' => $order->amount,  
                 'saleDate' => now(),  

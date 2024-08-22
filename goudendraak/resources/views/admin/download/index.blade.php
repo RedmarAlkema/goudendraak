@@ -2,150 +2,25 @@
 
 @section('content')
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sales List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;            
-            margin: 0;
-            padding: 0;
-        }
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Sales List</h1>
 
-        .container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-        }
-
-        .search-container {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .search-container input[type="text"] {
-            padding: 8px;
-            font-size: 14px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            width: 250px;
-        }
-
-        .search-container button {
-            padding: 8px 12px;
-            font-size: 14px;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-left: 10px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        table th, table td {
-            padding: 12px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        table th {
-            background-color: #f8f8f8;
-            color: #555;
-        }
-
-        table tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        .pagination {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-        }
-
-        .pagination li {
-            margin: 0 5px;
-        }
-
-        .pagination a {
-            color: #007bff;
-            text-decoration: none;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-
-        .pagination a:hover {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        .pagination .active a {
-            background-color: #007bff;
-            color: #fff;
-            border-color: #007bff;
-        }
-
-        .pagination .disabled a {
-            color: #ccc;
-            pointer-events: none;
-            border-color: #ddd;
-        }
-
-        .btn-download {
-            display: inline-block;
-            margin-bottom: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007bff;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            text-align: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <h1>Sales List</h1>
-
-    <div class="search-container">
-        <form action="{{ route('admin.sales') }}" method="GET">
-            <input type="text" name="search" placeholder="Zoeken..." value="{{ request('search') }}">
-            <button type="submit">Zoeken</button>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <form action="{{ route('admin.sales') }}" method="GET" class="form-inline">
+            <input type="text" name="search" class="form-control mr-2" placeholder="@lang('Zoeken...')" value="{{ request('search') }}">
+            <button type="submit" class="btn btn-primary">@lang('Zoeken')</button>
         </form>
+        <a href="{{ route('admin.export') }}" class="btn btn-success">@lang('Download sales van vandaag')</a>
     </div>
 
-    <a href="{{ route('admin.export') }}" class="btn-download">Download sales van vandaag</a>
-
-    <table>
-        <thead>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
             <tr>
-                <th>Menu Naam</th>
-                <th>Menu Nummer</th>
-                <th>Prijs</th>
-                <th>Aantal</th>
-                <th>Verkoopdatum</th>
+                <th>@lang('Menu Naam')</th>
+                <th>@lang('Menu Nummer')</th>
+                <th>@lang('Prijs')</th>
+                <th>@lang('Aantal')</th>
+                <th>@lang('Verkoopdatum')</th>
             </tr>
         </thead>
         <tbody>
@@ -161,11 +36,9 @@
         </tbody>
     </table>
 
-    <ul class="pagination">
+    <div class="d-flex justify-content-center">
         {{ $sales->links('pagination::bootstrap-4') }}
-    </ul>
+    </div>
 </div>
 
-</body>
-</html>
 @endsection

@@ -4,98 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tafel Overzicht</title>
-    <style>
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .table-list {
-            list-style: none;
-            padding: 0;
-        }
-        .table-item {
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .occupied {
-            color: red;
-            font-weight: bold;
-        }
-        .available {
-            color: green;
-            font-weight: bold;
-        }
-        .reserve-link, .pay-btn, .option-btn, .cancel-btn {
-            text-decoration: none;
-            padding: 5px 10px;
-            background-color: #007bff;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .reserve-link:hover, .pay-btn:hover, .option-btn:hover, .cancel-btn:hover {
-            background-color: #0056b3;
-        }
-        .hidden {
-            display: none;
-        }
-        .popup {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: white;
-            padding: 20px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            z-index: 1000;
-        }
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-        }
-    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Tafel Overzicht</h1>
-        <ul class="table-list">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Tafel Overzicht</h1>
+        <div class="list-group">
             @foreach($tables as $table)
-                <li class="table-item" data-table-id="{{ $table->id }}" data-table-total="{{ number_format($table->total, 2, ',', '.') }}">
-                    <span>Tafelnummer: {{ $table->table_number }}</span>
-                    <span>Plekken: {{$table->space }}</span>
-                    @if($table->occupied)
-                        <span class="occupied">Bezet</span>
-                        <p>Te betalen bedrag: € {{ $table->total }}</span></p>
-                        <form action="{{ route('tables.finalize', $table->id) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="pay-btn">Betalen</button>
-                        </form>
-                       
-                    @else
-                        <span class="available">Beschikbaar</span>
-                        <a href="{{ route('tables.reserve', $table->id) }}" class="reserve-link">Reserveren</a>
-                    @endif
-                </li>
+                <div class="list-group-item d-flex justify-content-between align-items-center @if($table->occupied) list-group-item-danger @else list-group-item-success @endif">
+                    <div>
+                        <h5>Tafelnummer: {{ $table->table_number }}</h5>
+                        <p>Plekken: {{$table->space }}</p>
+                    </div>
+                    <div class="text-end">
+                        @if($table->occupied)
+                            <p class="mb-2">Bezet</p>
+                            <p>Te betalen bedrag: € {{ number_format($table->total, 2, ',', '.') }}</p>
+                            <form action="{{ route('tables.finalize', $table->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Betalen</button>
+                            </form>
+                        @else
+                            <p class="mb-2">Beschikbaar</p>
+                            <a href="{{ route('tables.reserve', $table->id) }}" class="btn btn-success">Reserveren</a>
+                        @endif
+                    </div>
+                </div>
             @endforeach
-        </ul>
+        </div>
     </div>
-    
+
     <div id="overlay" class="overlay hidden"></div>
 
-    <script>
-        
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
