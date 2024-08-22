@@ -11,6 +11,8 @@ class Sale extends Model
 
     protected $table = 'sales';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'itemId',
         'amount',
