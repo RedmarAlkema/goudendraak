@@ -2,32 +2,34 @@
     <div>
         <div class="d-flex justify-content-center align-items-center mb-4">
             <div class="me-3">
-                <input type="text" v-model="search" class="form-control" placeholder="Zoek menu...">
+                <input type="text" v-model="search" class="form-control form-control-lg" placeholder="Zoek menu...">
             </div>
             <div>
-                <select v-model="selectedSoortgerecht" id="soortgerecht" class="form-select">
-                    <option value="">Filter</option>
+                <select v-model="selectedSoortgerecht" id="soortgerecht" class="form-select form-select-lg">
+                    <option value="">Filter op soort gerecht</option>
                     <option v-for="soort in uniqueSoortgerechten" :key="soort" :value="soort">
                         {{ soort }}
                     </option>
                 </select>
             </div>
         </div>
+
         <div class="row">
-            <div v-for="menu in filteredMenus" :key="menu.id" class="col-md-3 mb-4">
-                <div class="card text-center bg-danger text-warning">
-                    <div class="card-body">
-                        <h5 class="card-title text-white">{{ menu.naam }}</h5>
-                        <p class="card-text">{{ menu.soortgerecht }}</p>
-                        <p class="card-text">€{{ menu.price.toFixed(2) }}</p>
-                        <p class="card-text">{{ menu.beschrijving }}</p>
+            <div v-for="menu in filteredMenus" :key="menu.id" class="col-md-4 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body text-center">
+                        <h5 class="card-title text-dark">{{ menu.naam }}</h5>
+                        <p class="card-text text-muted">{{ menu.soortgerecht }}</p>
+                        <p class="card-text text-success fw-bold">€{{ menu.price.toFixed(2) }}</p>
+                        <p class="card-text text-secondary">{{ menu.beschrijving }}</p>
                         <form @submit.prevent="addToCart(menu.id)">
-                            <button type="submit" class="btn btn-outline-warning">Voeg toe aan winkelwagen</button>
+                            <button type="submit" class="btn btn-primary w-100">Voeg toe aan winkelwagen</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
+
         <nav>
             <ul class="pagination justify-content-center mt-4">
                 <li v-for="page in totalPages" :key="page" class="page-item" :class="{ active: currentPage === page }">

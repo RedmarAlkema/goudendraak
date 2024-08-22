@@ -4,125 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Golden Dragon</title>
-    <style>
-        body {
-            background-color: darkred;
-            margin: 15px 50px;
-        }
-        td {
-            padding: 0;
-        }
-        @font-face {
-            font-family: 'chinese_takeawayregular';
-            src: url('{{ asset('fonts/chinesetakeaway-webfont.woff2') }}') format('woff2'),
-                 url('{{ asset('fonts/chinesetakeaway-webfont.woff') }}') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        a {
-            text-decoration: none;
-            color: yellow;            
-        }
-        .lang {
-            text-decoration: none;
-            color: yellow;
-            font-size: 14px;
-        }
-        .pagination {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            padding: 0;
-            margin-top: 20px;
-        }
-        .pagination li {
-            margin: 0 5px;
-        }
-        .pagination a {
-            color: yellow;
-            text-decoration: none;
-            padding: 8px 12px;
-            border: 2px solid yellow;
-            border-radius: 4px;
-            background-color: red;
-            font-family: 'chinese_takeawayregular';
-            font-size: 16px;
-        }
-        .pagination a:hover {
-            background-color: yellow;
-            color: red;
-        }
-        .pagination .active a {
-            background-color: yellow;
-            color: red;
-            border-color: yellow;
-        }
-        .pagination .disabled a {
-            color: #ccc;
-            pointer-events: none;
-            border-color: #ddd;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: red;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-            border-radius: 5px;
-        }
-        .dropdown-content a {
-            color: yellow;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-            text-align: left;
-            font-family: 'chinese_takeawayregular';
-        }
-        .dropdown-content a:hover {
-            background-color: yellow;
-            color: red;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown:hover .dropbtn {
-            background-color: yellow;
-            color: red;
-        }
-        .dropbtn {
-            background-color: red;
-            color: yellow;
-            padding: 10px;
-            font-size: 16px;
-            font-family: 'chinese_takeawayregular';
-            border: 2px solid yellow;
-            cursor: pointer;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
 <body>    
-    <table id="main_table" style="padding:5px;width:100%;border-collapse: collapse">
-        <tr style="height:50px;background-color:red"> 
-            <td style="text-align:center;width:30%;color:yellow;font-size:30px">
-                <img style="vertical-align: middle;" src="{{ asset('pictures/dragon-small.png') }}" alt="Golden Dragon" height="50px">
-                <span style="font-family:'chinese_takeawayregular'">De Gouden Draak</span>
-                <img style="vertical-align: middle;" src="{{ asset('pictures/dragon-small-flipped.png') }}" alt="Golden Dragon" height="50px">
+    <table id="main_table">
+        <tr class="tr1"> 
+            <td class="td1">
+                <img class="img1" src="{{ asset('pictures/dragon-small.png') }}" alt="Golden Dragon">
+                    <span class="spanText">De Gouden Draak</span>
+                <img class="img1" src="{{ asset('pictures/dragon-small-flipped.png') }}" alt="Golden Dragon">
             </td>
             <td>
-                <a href="#" style="color:yellow;font-weight:bold;text-decoration: none;">
+                <a href="#" class="movingText">
                     <marquee behavior="scroll" direction="left">
                     @lang('public.Welcome')
                     </marquee>
                 </a>
             </td>
-            <td style="text-align:center;width:30%;color:yellow;font-size:30px">                
+            <td class="td1">                
                 <div class="dropdown">
                     <button class="dropbtn">                        
                         @lang('public.Taal')
@@ -176,78 +76,78 @@
         </tr>
     </table>
 
-    <table id="main_table" style="padding:5px;width:100%;border-collapse: collapse">
-        <tr style="height:7px;background-color:red">
+    <table id="main_table">
+        <tr class="tr2">
             <td colspan="9"></td>
         </tr>
-        <tr style="height:25px;background-color:red">
-            <td width="7px"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-top:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="border-top:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-top:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
-            <td width="7px"></td>
+        <tr class="tr3">
+            <td class="small_td"></td>
+            <td class="td2"></td>
+            <td class="td3"></td>
+            <td class="td4"></td>
+            <td class="td5"></td>
+            <td class="td6"></td>
+            <td class="td2"></td>
+            <td class="td3"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:25px;background-color:red">
-            <td width="7px"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
+        <tr class="tr3">
+            <td class="small_td"></td>
+            <td class="td6"></td>
+            <td class="td7"></td>
+            <td class="td7"></td> 
             <td></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td width="7px"></td>
+            <td class="td7"></td>
+            <td class="td7"></td>
+            <td class="td4"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:25px;background-color:red">
-            <td width="7px"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px"></td>
+        <tr class="tr3">
+            <td class="small_td"></td>
+            <td class="td4"></td>
+            <td class="td7"></td>
+            <td class="small_td2"></td>
             <td></td>
-            <td style="width:25px"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border-bottom:4px solid yellow"></td>
-            <td width="7px"></td>
+            <td class="small_td2"></td>
+            <td class="td7"></td>
+            <td class="td8"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:50px;background-color:red"> 
-            <td width="7px"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-left:4px solid yellow"></td>
-            <td style="width:25px;"></td>
-            <td style="width:25px;"></td>
-            <td style="text-align:center">                
-                <table width="100%">
+        <tr class="tr1"> 
+            <td class="small_td"></td>
+            <td class="td9"></td>
+            <td class="small_td2"></td>
+            <td class="small_td2"></td>
+            <td class="td10">                
+                <table class="table1">
                     <tr>
                         <td colspan="3">
                             <p>
-                                <img src="{{ asset('pictures/dragon-small.png') }}" style="float:left;height:200px" alt="Golden Dragon"> 
-                                <img src="{{ asset('pictures/dragon-small-flipped.png') }}" style="float:right;height:200px" alt="Golden Dragon"> 
-                                <span style="font-size:40px;font-weight:bold;color:yellow">@lang('public.Chinees Indische Specialiteiten')</span><br>
-                                <span style="font-size:50px;font-weight:bold;color:yellow">De Gouden Draak</span><br>
+                                <img src="{{ asset('pictures/dragon-small.png') }}" class="img2" alt="Golden Dragon"> 
+                                <img src="{{ asset('pictures/dragon-small-flipped.png') }}" class="img3" alt="Golden Dragon"> 
+                                <span class="span1">@lang('public.Chinees Indische Specialiteiten')</span><br>
+                                <span class="span2">De Gouden Draak</span><br>
                             </p>
                             <p>
-                                <table style="margin:auto;font-size:20px;color:white" border="1px solid white">
-                                    <tr background="{{ asset('pictures/menu_bg_gradient.png') }}">
-                                        <td valign="middle">
-                                            <a href="{{ route('menukaart') }}" style="color:white">
+                                <table class="table2">
+                                    <tr class="tr6">
+                                        <td class="tr4">
+                                            <a href="{{ route('menukaart') }}" class="white">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@lang('public.Menukaart')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                         </td>
-                                        <td valign="middle">
-                                            <a href="{{ route('news') }}" style="color:white">
+                                        <td class="tr4">
+                                            <a href="{{ route('news') }}" class="white">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@lang('public.Nieuws')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                         </td>
-                                        <td valign="middle">
-                                            <a href="{{ route('contact') }}" style="color:white">
+                                        <td class="tr4">
+                                            <a href="{{ route('contact') }}" class="white">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@lang('public.Contact')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                         </td>
-                                        <td valign="middle">
-                                            <a href="{{ route('paginas.menu') }}" style="color:white">
+                                        <td class="tr4">
+                                            <a href="{{ route('paginas.menu') }}" class="white">
                                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@lang('public.Menu')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                             </a>
                                         </td>
@@ -256,55 +156,55 @@
                             </p>
                         </td>
                     </tr>
-                    <tr style="padding-top:50px">
-                        <td colspan="3" height="50px"></td>
-                    </tr>       
+                    <tr class="tr5">
+                        <td class="td11" colspan="3"></td>
+                    </tr>                 
                     <div class="content">
                         @yield('content')
-                    </div>            
+                    </div>   
                 </table>
-            <br>
-                <div text-align="center"><a href="{{ route('contact_new') }}">@lang('public.naar contact')</a></div>
+                <br>
+                <div class="centerText"><a href="{{ route('contact_new') }}">@lang('public.naar contact')</a></div>
             </td>
-            <td style="width:25px;"></td>
-            <td style="width:25px;"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-left:4px solid yellow"></td>
-            <td width="7px"></td>
+            <td class="small_td2"></td>
+            <td class="small_td2"></td>
+            <td class="td9"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:25px;background-color:red">
-            <td width="7px"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px"></td>
+        <tr class="tr3">
+            <td class="small_td"></td>
+            <td class="td3"></td>
+            <td class="td7"></td>
+            <td class="small_td2"></td>
             <td></td>
-            <td style="width:25px"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border-top:4px solid yellow"></td>
-            <td width="7px"></td>
+            <td class="small_td2"></td>
+            <td class="td7"></td>
+            <td class="td12"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:25px;background-color:red">
-            <td width="7px"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-top:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
+        <tr class="tr3">
+            <td class="small_td"></td>
+            <td class="td2"></td>
+            <td class="td7"></td>
+            <td class="td7"></td>
             <td></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
-            <td width="7px"></td>
+            <td class="td7"></td>
+            <td class="td7"></td>
+            <td class="td3"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:25px;background-color:red">
-            <td width="7px"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow"></td>
-            <td style="border-top:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border-left:4px solid yellow;"></td>
-            <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td width="7px"></td>
+        <tr class="tr3">
+            <td class="small_td"></td>
+            <td class="td6"></td>
+            <td class="td4"></td>
+            <td class="td13"></td>
+            <td class="td5"></td>
+            <td class="td14"></td>
+            <td class="td6"></td>
+            <td class="td4"></td>
+            <td class="small_td"></td>
         </tr>
-        <tr style="height:7px;background-color:red">
+        <tr class="tr2">
             <td colspan="9"></td>
         </tr>
     </table>

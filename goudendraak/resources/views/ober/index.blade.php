@@ -9,11 +9,16 @@
 <body>
     <div class="container my-5">
         <h1 class="text-center mb-4">Tafel Overzicht</h1>
-        <div class="list-group">
+        
+        <div class="mb-4">
+            <input type="text" id="searchInput" class="form-control" placeholder="Zoek op tafelnummer...">
+        </div>
+        
+        <div class="list-group" id="tableList">
             @foreach($tables as $table)
-                <div class="list-group-item d-flex justify-content-between align-items-center @if($table->occupied) list-group-item-danger @else list-group-item-success @endif">
+                <div class="list-group-item d-flex justify-content-between align-items-center table-item @if($table->occupied) list-group-item-danger @else list-group-item-success @endif">
                     <div>
-                        <h5>Tafelnummer: {{ $table->table_number }}</h5>
+                        <h5 class="table-number">Tafelnummer: {{ $table->table_number }}</h5>
                         <p>Plekken: {{$table->space }}</p>
                     </div>
                     <div class="text-end">
@@ -37,5 +42,20 @@
     <div id="overlay" class="overlay hidden"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            let filter = this.value.toUpperCase();
+            let tableItems = document.querySelectorAll('.table-item');
+
+            tableItems.forEach(function(item) {
+                let tableNumber = item.querySelector('.table-number').textContent.toUpperCase();
+                if (tableNumber.indexOf(filter) > -1) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
