@@ -11,7 +11,10 @@
         <h1 class="text-center mb-4">Tafel Overzicht</h1>
         
         <div class="mb-4">
-            <input type="text" id="searchInput" class="form-control" placeholder="Zoek op tafelnummer...">
+            <form action="{{ route('tables.index') }}" method="GET" class="d-flex">
+                <input type="text" name="search" id="searchInput" class="form-control me-2" placeholder="Zoek op tafelnummer..." value="{{ request()->input('search') }}">
+                <button type="submit" class="btn btn-primary">Zoeken</button>
+            </form>
         </div>
         
         <div class="list-group" id="tableList">
@@ -42,20 +45,5 @@
     <div id="overlay" class="overlay hidden"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let filter = this.value.toUpperCase();
-            let tableItems = document.querySelectorAll('.table-item');
-
-            tableItems.forEach(function(item) {
-                let tableNumber = item.querySelector('.table-number').textContent.toUpperCase();
-                if (tableNumber.indexOf(filter) > -1) {
-                    item.style.display = '';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    </script>
 </body>
 </html>
