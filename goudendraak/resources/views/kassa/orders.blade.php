@@ -4,16 +4,16 @@
     <h1 class="text-center mb-4">Kassa - Bestellingen van Vandaag</h1>
 
     <form method="GET" action="{{ route('kassa.orders') }}" class="row mb-4">
-        <div class="col-md-4">
+        <div class="col-md-4 mb-3 mb-md-0">
             <input type="text" name="table_id" placeholder="Filter op tafel ID" value="{{ request('table_id') }}" class="form-control">
         </div>
         <div class="col-md-4">
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary w-100">Filter</button>
         </div>
     </form>
 
-    <table class="table table-bordered">
-        <thead>
+    <table class="table table-bordered table-hover">
+        <thead class="table-dark">
             <tr>
                 <th>Order ID</th>
                 <th>Menu ID</th>
@@ -36,19 +36,16 @@
                     <td>
                         <form method="POST" action="{{ route('kassa.orders.comment', $order->id) }}">
                             @csrf
-                            <div class="input-group">
+                            <div class="input-group mb-2">
                                 <input type="text" name="comment" class="form-control" placeholder="Voeg een opmerking toe" value="{{ $order->comment }}">
                                 <button type="submit" class="btn btn-primary">Opslaan</button>
                             </div>
-                            <div class="mt-2">
-                                <label for="mostUsedComments">Selecteer een veelgebruikte opmerking:</label>
-                                <select id="mostUsedComments" class="form-select" onchange="this.form.comment.value = this.value">
-                                    <option value="">Selecteer...</option>
-                                    @foreach($mostUsedComments as $comment)
-                                        <option value="{{ $comment }}">{{ $comment }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                            <select id="mostUsedComments" class="form-select" onchange="this.form.comment.value = this.value">
+                                <option value="">Selecteer een veelgebruikte opmerking...</option>
+                                @foreach($mostUsedComments as $comment)
+                                    <option value="{{ $comment }}">{{ $comment }}</option>
+                                @endforeach
+                            </select>
                         </form>
                     </td>
                 </tr>

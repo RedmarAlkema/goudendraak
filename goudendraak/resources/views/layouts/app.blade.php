@@ -1,18 +1,17 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Golden Dragon</title>
     <style>
         body {
             background-color: darkred;
-            margin: 15px;
-            margin-left: 50px;
-            margin-right: 50px;
+            margin: 15px 50px;
         }
         td {
-            padding: 0px;
+            padding: 0;
         }
-
         @font-face {
             font-family: 'chinese_takeawayregular';
             src: url('{{ asset('fonts/chinesetakeaway-webfont.woff2') }}') format('woff2'),
@@ -20,18 +19,15 @@
             font-weight: normal;
             font-style: normal;
         }
-
         a {
             text-decoration: none;
             color: yellow;            
         }
-
-        .lang{
+        .lang {
             text-decoration: none;
             color: yellow;
             font-size: 14px;
         }
-
         .pagination {
             display: flex;
             justify-content: center;
@@ -39,11 +35,9 @@
             padding: 0;
             margin-top: 20px;
         }
-
         .pagination li {
             margin: 0 5px;
         }
-
         .pagination a {
             color: yellow;
             text-decoration: none;
@@ -54,29 +48,24 @@
             font-family: 'chinese_takeawayregular';
             font-size: 16px;
         }
-
         .pagination a:hover {
             background-color: yellow;
             color: red;
         }
-
         .pagination .active a {
             background-color: yellow;
             color: red;
             border-color: yellow;
         }
-
         .pagination .disabled a {
             color: #ccc;
             pointer-events: none;
             border-color: #ddd;
         }
-
         .dropdown {
             position: relative;
             display: inline-block;
         }
-
         .dropdown-content {
             display: none;
             position: absolute;
@@ -86,7 +75,6 @@
             z-index: 1;
             border-radius: 5px;
         }
-
         .dropdown-content a {
             color: yellow;
             padding: 12px 16px;
@@ -95,21 +83,17 @@
             text-align: left;
             font-family: 'chinese_takeawayregular';
         }
-
         .dropdown-content a:hover {
             background-color: yellow;
             color: red;
         }
-
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
         .dropdown:hover .dropbtn {
             background-color: yellow;
             color: red;
         }
-
         .dropbtn {
             background-color: red;
             color: yellow;
@@ -153,7 +137,21 @@
                             Nederlands
                         </a>
                         <a class="lang" href="{{ route('localize', ['lange' => 'en']) }}">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#071b65"></rect><path d="M5.101,4h-.101c-1.981,0-3.615,1.444-3.933,3.334L26.899,28h.101c1.981,0,3.615-1.444,3.933-3.334L5.101,4Z" fill="#fff"></path><path d="M22.25,19h-2.5l9.934,7.947c.387-.353,.704-.777,.929-1.257l-8.363-6.691Z" fill="#b92932"></path><path d="M1.387,6.309l8.363,6.691h2.5L2.316,5.053c-.387,.353-.704,.777-.929,1.257Z" fill="#b92932"></path><path d="M5,28h.101L30.933,7.334c-.318-1.891-1.952-3.334-3.933-3.334h-.101L1.067,24.666c.318,1.891,1.952,3.334,3.933,3.334Z" fill="#fff"></path><rect x="13" y="4" width="6" height="24" fill="#fff"></rect><rect x="1" y="13" width="30" height="6" fill="#fff"></rect><rect x="14" y="4" width="4" height="24" fill="#b92932"></rect><rect x="14" y="1" width="4" height="30" transform="translate(32) rotate(90)" fill="#b92932"></rect><path d="M28.222,4.21l-9.222,7.376v1.414h.75l9.943-7.94c-.419-.384-.918-.671-1.471-.85Z" fill="#b92932"></path><path d="M2.328,26.957c.414,.374,.904,.656,1.447,.832l9.225-7.38v-1.408h-.75L2.328,26.957Z" fill="#b92932"></path><path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path><path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                                <rect x="1" y="4" width="30" height="24" rx="4" ry="4" fill="#071b65"></rect>
+                                <path d="M5.101,4h-.101c-1.981,0-3.615,1.444-3.933,3.334L26.899,28h.101c1.981,0,3.615-1.444,3.933-3.334L5.101,4Z" fill="#fff"></path>
+                                <path d="M22.25,19h-2.5l9.934,7.947c.387-.353,.704-.777,.929-1.257l-8.363-6.691Z" fill="#b92932"></path>
+                                <path d="M1.387,6.309l8.363,6.691h2.5L2.316,5.053c-.387,.353-.704,.777-.929,1.257Z" fill="#b92932"></path>
+                                <path d="M5,28h.101L30.933,7.334c-.318-1.891-1.952-3.334-3.933-3.334h-.101L1.067,24.666c.318,1.891,1.952,3.334,3.933,3.334Z" fill="#fff"></path>
+                                <rect x="13" y="4" width="6" height="24" fill="#fff"></rect>
+                                <rect x="1" y="13" width="30" height="6" fill="#fff"></rect>
+                                <rect x="14" y="4" width="4" height="24" fill="#b92932"></rect>
+                                <rect x="14" y="1" width="4" height="30" transform="translate(32) rotate(90)" fill="#b92932"></rect>
+                                <path d="M28.222,4.21l-9.222,7.376v1.414h.75l9.943-7.94c-.419-.384-.918-.671-1.471-.85Z" fill="#b92932"></path>
+                                <path d="M2.328,26.957c.414,.374,.904,.656,1.447,.832l9.225-7.38v-1.408h-.75L2.328,26.957Z" fill="#b92932"></path>
+                                <path d="M27,4H5c-2.209,0-4,1.791-4,4V24c0,2.209,1.791,4,4,4H27c2.209,0,4-1.791,4-4V8c0-2.209-1.791-4-4-4Zm3,20c0,1.654-1.346,3-3,3H5c-1.654,0-3-1.346-3-3V8c0-1.654,1.346-3,3-3H27c1.654,0,3,1.346,3,3V24Z" opacity=".15"></path>
+                                <path d="M27,5H5c-1.657,0-3,1.343-3,3v1c0-1.657,1.343-3,3-3H27c1.657,0,3,1.343,3,3v-1c0-1.657-1.343-3-3-3Z" fill="#fff" opacity=".2"></path>
+                            </svg>
                             English
                         </a>
                         <a class="lang" href="{{ route('localize', ['lange' => 'de']) }}">
@@ -173,7 +171,6 @@
                             Français
                         </a>
                     </div>
-
                 </div>
             </td>
         </tr>
@@ -181,12 +178,10 @@
 
     <table id="main_table" style="padding:5px;width:100%;border-collapse: collapse">
         <tr style="height:7px;background-color:red">
-            <td colspan="9">
-            </td>
-        <tr>
+            <td colspan="9"></td>
+        </tr>
         <tr style="height:25px;background-color:red">
-            <td width="7px">
-            </td>
+            <td width="7px"></td>
             <td style="width:25px;border-left:4px solid yellow;border-top:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
@@ -194,10 +189,10 @@
             <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
             <td style="width:25px;border-left:4px solid yellow;border-top:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:25px;background-color:red">
-            <td width="7px">
+            <td width="7px"></td>
             <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
@@ -205,10 +200,10 @@
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:25px;background-color:red">
-            <td width="7px">
+            <td width="7px"></td>
             <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px"></td>
@@ -216,17 +211,17 @@
             <td style="width:25px"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border-bottom:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:50px;background-color:red"> 
-            <td width="7px">
+            <td width="7px"></td>
             <td style="width:25px;border-right:4px solid yellow;border-left:4px solid yellow"></td>
             <td style="width:25px;"></td>
             <td style="width:25px;"></td>
             <td style="text-align:center">                
-                <table width=100%>
+                <table width="100%">
                     <tr>
-                        <td colspan='3'>
+                        <td colspan="3">
                             <p>
                                 <img src="{{ asset('pictures/dragon-small.png') }}" style="float:left;height:200px" alt="Golden Dragon"> 
                                 <img src="{{ asset('pictures/dragon-small-flipped.png') }}" style="float:right;height:200px" alt="Golden Dragon"> 
@@ -262,10 +257,8 @@
                         </td>
                     </tr>
                     <tr style="padding-top:50px">
-                        <td colspan="3" height="50px">    
-                        </td>
+                        <td colspan="3" height="50px"></td>
                     </tr>                   
-                    
                 </table>
                 {{ $slot }}
                 <br>
@@ -274,10 +267,10 @@
             <td style="width:25px;"></td>
             <td style="width:25px;"></td>
             <td style="width:25px;border-right:4px solid yellow;border-left:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:25px;background-color:red">
-            <td width="7px">
+            <td width="7px"></td>
             <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px"></td>
@@ -285,10 +278,10 @@
             <td style="width:25px"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border-top:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:25px;background-color:red">
-            <td width="7px">
+            <td width="7px"></td>
             <td style="width:25px;border-left:4px solid yellow;border-top:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
@@ -296,11 +289,10 @@
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-top:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:25px;background-color:red">
-            <td width="7px">
-            </td>
+            <td width="7px"></td>
             <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow"></td>
@@ -308,12 +300,11 @@
             <td style="width:25px;border-left:4px solid yellow;"></td>
             <td style="width:25px;border-left:4px solid yellow;border-bottom:4px solid yellow"></td>
             <td style="width:25px;border-right:4px solid yellow;border-bottom:4px solid yellow"></td>
-            <td width="7px">
+            <td width="7px"></td>
         </tr>
         <tr style="height:7px;background-color:red">
-            <td colspan="9">
-            </td>
-        <tr>
+            <td colspan="9"></td>
+        </tr>
     </table>
 </body>
 </html>
