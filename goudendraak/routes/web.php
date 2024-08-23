@@ -5,6 +5,9 @@ use App\Http\Controllers\KlantController;
 use App\Http\Controllers\TableController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\WebsiteController;
+use App\Http\Controllers\KassaController;
+use App\Http\Controllers\LocalizeController;
 
 Route::get('/', function () {
     return view('index');
@@ -29,6 +32,9 @@ Route::get('/paginas/contact', function () {
 Route::get('/paginas/contact_new', function () {
     return view('paginas.contact_new');
 })->name('contact_new');
+
+Route::get('/menu', [WebsiteController::class, 'menu'])->name('paginas.menu');
+Route::post('/menu/like/{id}', [WebsiteController::class, 'toggleLike'])->name('menu.like');
 
 Route::get('/bestellen', [KlantController::class, 'index'])->name('cart.index');
 Route::get('/cart', [KlantController::class, 'cartIndex'])->name('cart.cart');
@@ -55,3 +61,9 @@ Route::delete('/admin/menu/{id}', [MenuController::class, 'destroy'])->name('adm
 Route::get('/sales/export/',[ExcelController::class, 'export'])->name('admin.export');
 Route::get('/sales/index/',[ExcelController::class, 'index'])->name('admin.sales');
 Route::get('/sales/today/',[ExcelController::class, 'today'])->name('admin.sales.today');
+
+Route::get('/kassa',[KassaController::class, 'index'])->name('kassa.index');
+Route::get('/kassa/orders', [KassaController::class, 'orders'])->name('kassa.orders');
+Route::post('/kassa/orders/{id}/comment', [KassaController::class, 'addComment'])->name('kassa.orders.comment');
+
+Route::get('/locale{lange}', [LocalizeController::class, 'setLang'])->name('localize');

@@ -6,17 +6,28 @@ use Illuminate\Http\Request;
 use App\Models\Table;
 use App\Models\Order;
 use App\Models\Visitor;
+use App\Models\Sale;
 use App\Models\Reservation;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
 
 
 class TableController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tables = Table::orderBy('occupied', 'asc')->get();
+        $query = Table::orderBy('occupied', 'asc');
+
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query->where('table_number', 'like', '%' . $search . '%');
+        }
+
+        $tables = $query->get();
+
         return view('ober.index', compact('tables'));
     }
+
 
     public function reserve($id)
     {
@@ -75,7 +86,7 @@ class TableController extends Controller
         ->get();
 
         foreach($orders as $order) {
-            Sales::create([
+            Sale::create([
                 'itemId' => $order->menu_id,
                 'amount' => $order->amount,  
                 'saleDate' => now(),  

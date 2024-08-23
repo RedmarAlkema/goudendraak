@@ -37,7 +37,7 @@ class KlantController extends Controller
 
         Session::put('cart', $cart);
 
-        return redirect()->route('cart.index')->with('success', 'Item toegevoegd aan de winkelwagen!');
+        return redirect()->route('cart.index');
     }
 
     public function cartItemCount()
