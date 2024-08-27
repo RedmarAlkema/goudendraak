@@ -3,7 +3,7 @@
 	<tr class="tr5">
 		<td width="50px">	
 		</td>
-		<td align="center" class="td17">
+		<td class="td17">
 			<img class="table1" src="../menukaarten/restaurant-menukaart-1-2.jpg">
 			<img class="table1" src="../menukaarten/restaurant-menukaart-1.jpg">
 		</td>	
