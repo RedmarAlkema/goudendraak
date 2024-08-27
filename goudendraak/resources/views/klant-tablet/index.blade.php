@@ -14,9 +14,14 @@
     <div id="app" class="container mt-4">
         @if(Session::has('round'))
             <div class="alert alert-info position-fixed top-0 start-0 mt-2 ms-2">
-                Round {{ Session::get('round') }}
+                Ronde {{ Session::get('round') }}
+            </div>
+        @else
+            <div class="alert alert-info position-fixed top-0 start-0 mt-2 ms-2">
+                Ronde 1
             </div>
         @endif
+        
 
         @if(session('error'))
             <div class="alert alert-warning text-center">
@@ -28,6 +33,9 @@
             <div class="text-center">
                 <h2 class="text-primary">Tafelnummer: {{ Session::get('table')->table_number }}</h2>
             </div>
+
+            <shopping-cart-component></shopping-cart-component>
+            <menu-component :menus="{{ json_encode($menus) }}"></menu-component>
         @else
             <div class="card mx-auto mt-4 card-max-width">
                 <div class="card-body text-center bg-light border-primary">
@@ -43,8 +51,7 @@
             </div>
         @endif
 
-        <shopping-cart-component></shopping-cart-component>
-        <menu-component :menus="{{ json_encode($menus) }}"></menu-component>
+        
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

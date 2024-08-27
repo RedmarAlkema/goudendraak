@@ -2,6 +2,10 @@
 
 return [
     'Localization' => 'Lokalisierung',
+    'Favorieten' => 'Favoriten',
+    'Alfabetisch' => 'Alphabetisch',
+    'Prijs oplopend' => 'Preis aufsteigend',
+    'Prijs Aflopend' => 'Preis absteigend',
     'Menukaart' => 'Speisekarte',
     'Nieuws' => 'Nachrichten',
     'Contact' => 'Kontakt',
