@@ -17,10 +17,15 @@ class LocalizeMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = Session::get("locale") ?? 'en';
-        Session::put('locale',$locale);
-        App::setlocale($locale);
+        try {
+            $locale = Session::get("locale") ?? 'en';
+            Session::put('locale', $locale);
+            App::setLocale($locale);
 
-        return $next($request);
+            return $next($request);
+        } catch (Exception $e) {
+            \Log::error('Fout in de LocalizeMiddleware: ' . $e->getMessage());
+            return response()->view('errors.general', [], 500);
+        }
     }
 }
