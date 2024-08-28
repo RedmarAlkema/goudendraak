@@ -33,14 +33,17 @@
             </tr>
         </thead>
         <tbody>
+        
             @foreach ($menu as $item)
-                <tr>
-                    <td>{{ $item->menunummer }}</td>
-                    <td>{{ $item->naam }}</td>
-                    <td>€ {{ number_format($item->price, 2, ',', '.') }}</td>
-                    <td>{{ $item->soortgerecht }}</td>
-                    <td>{{ $item->beschrijving }}</td>
-                </tr>
+                @if(!request('category') || request('category') == $item->soortgerecht)
+                    <tr>
+                        <td>{{ $item->menunummer }}</td>
+                        <td>{{ $item->naam }}</td>
+                        <td>€ {{ number_format($item->price, 2, ',', '.') }}</td>
+                        <td>{{ $item->soortgerecht }}</td>
+                        <td>{{ $item->beschrijving }}</td>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
